@@ -4,7 +4,6 @@ class Homepage extends Component {
     // console.log(this.props)
     return (
       <div>Homepage</div>
-      // <div>DashBoard</div>
     )
   }
 }
