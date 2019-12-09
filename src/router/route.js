@@ -38,10 +38,18 @@ export const adminRouter = [
     isOff:false
   },
   {
-    pathname:"/admin/setting",
+    pathname:"/admin/postContent",
     component:Setting,
     title:"发布内容",
     isOff:true,
     icon:"setting"
+  },
+  {
+    pathname:"/admin/setting",
+    component:Setting,
+    title:"设置",
+    isOff:true,
+    icon:"setting"
   }
+
 ]
