@@ -5,6 +5,7 @@ import "antd/dist/antd.css"
 import "./assets/css/reset.css"
 import App from './App'
 import {mainRouter} from "./router/route"
+import NotFound from "./pages/notFound"
 ReactDOM.render(
   (<Router> 
     <Switch>
@@ -16,6 +17,7 @@ ReactDOM.render(
         })
       }
       <Redirect to="/admin" from="/" exact/>
+      <Route path="/*" component={NotFound}/>
     </Switch>
   </Router>),
   document.getElementById('root')
