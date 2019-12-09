@@ -3,7 +3,7 @@ class DashBoard extends Component {
   render(){
     // console.log(this.props)
     return (
-      <div>DashBoard</div>
+      <div>DashBoad</div>
     )
   }
 }
