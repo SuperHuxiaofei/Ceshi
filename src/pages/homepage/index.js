@@ -1,10 +1,10 @@
 import React,{Component} from "react"
-class DashBoard extends Component {
+class Homepage extends Component {
   render(){
     // console.log(this.props)
     return (
-      <div>DashBoar人d</div>
+      <div>Homepage</div>
     )
   }
 }
-export default DashBoard
+export default Homepage

@@ -6,7 +6,7 @@ import "./assets/css/reset.css"
 import App from './App'
 import {mainRouter} from "./router/route"
 ReactDOM.render(
-  (<Router>
+  (<Router> 
     <Switch>
       {/* 这里不能用完全匹配，因为admin下面有子路由，完全匹配的话，就显示不出来 */}
       <Route path="/admin" render={(routerProps)=><App {...routerProps}/>}/>

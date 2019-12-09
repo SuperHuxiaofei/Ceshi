@@ -3,14 +3,14 @@ import Login from "./login"
 // import Admin from "../components/Frame"
 import ArticleList from "./article/ArticleList"
 import ArticleEdit from "./article/ArticleEdit"
-import DashBoard from "./dashboard"
+import Homepage from "./homepage"
 import Setting from "./setting"
 
 
 export {
     Login,
     NotFound,
-    DashBoard,
+    Homepage,
     ArticleList,
     ArticleEdit,
     Setting

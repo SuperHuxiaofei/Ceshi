@@ -1,7 +1,7 @@
 import {
   Login,
   NotFound,
-  DashBoard,
+  Homepage,
   ArticleList,
   ArticleEdit,
   Setting
@@ -19,16 +19,16 @@ export const mainRouter = [
 ]
 export const adminRouter = [
   {
-    pathname:"/admin/dashboard",
-    component:DashBoard,
-    title:"制表盘",
+    pathname:"/admin/homepage",
+    component:Homepage,
+    title:"个人主页",
     isOff:true,
     icon:"dashboard"
   },
   {
     pathname:"/admin/articleList",
     component:ArticleList,
-    title:"文章列表",
+    title:"热门话题",
     isOff:true,
     icon:"unordered-list"
   },
@@ -40,7 +40,7 @@ export const adminRouter = [
   {
     pathname:"/admin/setting",
     component:Setting,
-    title:"设置",
+    title:"发布内容",
     isOff:true,
     icon:"setting"
   }
