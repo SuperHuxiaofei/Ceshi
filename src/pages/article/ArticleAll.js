@@ -1,6 +1,5 @@
 import React,{Component} from "react"
 
-  <span>
 import ContentList from './ContentList'
 
 class ArticleAll extends Component{
