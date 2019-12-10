@@ -1,7 +1,7 @@
 const GET_INTERFACE_COLOR = "GET_INTERFACE_COLOR"
 
 const defaultState = {
-    color : "#fff"
+    color : "#000"
 }
 
 export default (state = defaultState,action)=>{
