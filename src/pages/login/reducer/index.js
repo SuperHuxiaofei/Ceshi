@@ -24,6 +24,7 @@ const getUserInfo = (data) => ({
     data
 })
 
+
 export const setUserInfo = (userInfo) => {
     return (dispatch) => {
         userLogin(userInfo)

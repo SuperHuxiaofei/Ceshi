@@ -1,4 +1,4 @@
-/* import React,{Component} from "react"
+import React,{Component} from "react"
 import {adminRouter} from "./router/route"
 import {Switch,Route,Redirect} from "react-router-dom"
 import Frame from "./components/Frame"
@@ -19,9 +19,9 @@ class App extends Component {
     )
   }
 }
-export default App */
+export default App
 
-import React, {Component} from "react"
+/* import React, {Component} from "react"
 import {Route,Switch,Redirect} from "react-router-dom"
 import {connect} from "react-redux"
 import Frame from "./components/Frame"
@@ -45,4 +45,4 @@ class App extends Component{
 const mapStateToProps = state => ({
     login : state.login
 })
-export default connect(mapStateToProps,null)(App)
+export default connect(mapStateToProps,null)(App) */
