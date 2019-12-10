@@ -47,7 +47,7 @@ export const adminRouter = [
   {
     pathname:"/admin/setting",
     component:Setting,
-    title:"发布内容",
+    title:"设置",
     isOff:true,
     icon:"setting"
   }
