@@ -1,7 +1,7 @@
 const GET_INTERFACE_COLOR = "GET_INTERFACE_COLOR"
 
 const defaultState = {
-    color : "#fff"
+        color:localStorage.getItem('color')
 }
 
 export default (state = defaultState,action)=>{
