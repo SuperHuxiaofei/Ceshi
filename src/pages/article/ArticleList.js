@@ -20,8 +20,8 @@ const tabListNoTitle = [
 
 const contentListNoTitle = {
   全站: <p><ArticleAll/></p>,
-  科学: <p>app content</p>,
-  时尚: <p>project content</p>,
+  科学: <p><ArticleAll/></p>,
+  时尚: <p><ArticleAll/></p>,
 }
 
 
