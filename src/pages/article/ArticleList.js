@@ -1,33 +1,34 @@
 import React,{Component} from "react"
 import { Card } from 'antd'
+import ArticleAll from './ArticleAll'
 
 
 const tabListNoTitle = [
   {
-    key: 'article',
-    tab: 'article',
+    key: '全站',
+    tab: '全站',
   },
   {
-    key: 'app',
-    tab: 'app',
+    key: '科学',
+    tab: '科学',
   },
   {
-    key: 'project',
-    tab: 'project',
+    key: '时尚',
+    tab: '时尚',
   },
 ]
 
 const contentListNoTitle = {
-  article: <p>article content</p>,
-  app: <p>app content</p>,
-  project: <p>project content</p>,
+  全站: <p><ArticleAll/></p>,
+  科学: <p>app content</p>,
+  时尚: <p>project content</p>,
 }
 
 
 class ArticleList extends Component {
   state = {
     key: 'tab1',
-    noTitleKey: 'app',
+    noTitleKey: '全站',
   }
   onTabChange = (key, type) => {
     console.log(key, type)
