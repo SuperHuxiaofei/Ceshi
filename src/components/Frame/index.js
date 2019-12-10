@@ -76,7 +76,7 @@ class Admin extends Component {
     return (
       <div>
         <Layout>
-          <Header className="header">
+          <Header className="header" style={{background:this.props.content.color}}>
             <div 
             style={{background:'#fff',position:'absolute',right:150,top:25,width:50,height:30,borderRadius:'5px',textAlign:'center'}}
             onClick={this.showModalMes}
