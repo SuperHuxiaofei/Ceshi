@@ -4,7 +4,8 @@ import {
   Homepage,
   ArticleList,
   ArticleEdit,
-  Setting
+  Setting,
+  PostContent
 } from "../pages"
 
 export const mainRouter = [
@@ -39,10 +40,10 @@ export const adminRouter = [
   },
   {
     pathname:"/admin/postContent",
-    component:Setting,
+    component:PostContent,
     title:"发布内容",
     isOff:true,
-    icon:"setting"
+    icon:"plus-circle"
   },
   {
     pathname:"/admin/setting",
@@ -51,4 +52,5 @@ export const adminRouter = [
     isOff:true,
     icon:"setting"
   }
+
 ]

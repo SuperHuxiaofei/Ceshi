@@ -5,6 +5,7 @@ import ArticleList from "./article/ArticleList"
 import ArticleEdit from "./article/ArticleEdit"
 import Homepage from "./homepage"
 import Setting from "./setting"
+import PostContent from "./postContent"
 
 
 export {
@@ -13,5 +14,6 @@ export {
     Homepage,
     ArticleList,
     ArticleEdit,
-    Setting
+    Setting,
+    PostContent
 }
