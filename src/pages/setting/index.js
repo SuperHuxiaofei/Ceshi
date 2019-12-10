@@ -25,6 +25,7 @@ class Setting extends Component {
   };
   ChangeColor = (e)=>{
      this.props.getColor(e.target.value)
+     localStorage.setItem("color",e.target.value)
   }
   
 
@@ -115,6 +116,7 @@ class Setting extends Component {
       </Row>
         </Panel>
         <Panel header="颜色设置" key="3">
+        <div style={{ width: 90, float: "left", height: "30px", lineHeight: "30px" }}>主题颜色: </div>
         <Input type="color"   onChange={this.ChangeColor}/>
         </Panel>
       </Collapse>
