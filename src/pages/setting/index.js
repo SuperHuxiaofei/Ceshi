@@ -1,11 +1,31 @@
 import React, { Component } from "react"
-import { Collapse, Select, Button, Modal, Switch} from 'antd'
+import {connect} from "react-redux"
+import {getColor} from "../setting/reducer/setting.redux"
+import { Collapse, Select, Button, Modal, Switch, Slider, InputNumber, Row, Col,Input} from 'antd'
 const { Panel } = Collapse
 const { Option } = Select
 
-class Setting extends Component {
-  state = { visible: false };
 
+class Setting extends Component {
+  state = { 
+    visible: false,
+    inputValue: 1,
+    disabled: false,
+    color:""
+  };
+
+  handleDisabledChange = disabled => {
+    this.setState({ disabled });
+  }
+
+  onChange = value => {
+    this.setState({
+      inputValue: value,
+    });
+  };
+  ChangeColor = (e)=>{
+     this.props.getColor(e.target.value)
+  }
   
 
   showModal = () => {
@@ -15,14 +35,14 @@ class Setting extends Component {
   };
 
   handleOk = e => {
-    console.log(e);
+    // console.log(e);
     this.setState({
       visible: false,
     });
   };
 
   handleCancel = e => {
-    console.log(e);
+    // console.log(e);
     this.setState({
       visible: false,
     });
@@ -30,7 +50,7 @@ class Setting extends Component {
 
 
   render() {
-    // console.log(this.props)
+    const { disabled } = this.state
     return (
       <Collapse bordered={false} defaultActiveKey={['1']}>
         <Panel header="字体设置" key="1">
@@ -70,15 +90,43 @@ class Setting extends Component {
         </div>
         </Panel>
 
-        <Panel header="下载设置" key="2">
+        <Panel header="声音设置" key="2">
         <div style={{ width: 90, float: "left", height: "30px", lineHeight: "30px" }}>声音 : </div>
-        <Switch></Switch>
+        <Switch size="small" checked={disabled} onChange={this.handleDisabledChange} />
+        <Row>
+        <Col span={12}>
+          <Slider
+            min={1}
+            max={100}
+            onChange={this.onChange}
+            value={typeof this.state.inputValue === 'number' ? this.state.inputValue : 0}
+            disabled={!disabled}
+          />
+        </Col> 
+        <Col span={4}>
+          <InputNumber
+            min={1}
+            max={100}
+            style={{ marginLeft: 16 }}
+            value={this.state.inputValue}
+            onChange={this.onChange}
+          />
+        </Col>
+      </Row>
         </Panel>
-        <Panel header="设置" key="3">
-
+        <Panel header="颜色设置" key="3">
+        <Input type="color"   onChange={this.ChangeColor}/>
         </Panel>
       </Collapse>
     )
   }
 }
-export default Setting
+
+const mapStateToProps = state =>{
+  return{
+    content : state.colorStore
+  }
+}
+
+
+export default connect(mapStateToProps,{getColor})(Setting)
