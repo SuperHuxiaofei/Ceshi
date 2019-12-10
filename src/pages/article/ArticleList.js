@@ -19,9 +19,9 @@ const tabListNoTitle = [
 ]
 
 const contentListNoTitle = {
-  全站: <p><ArticleAll/></p>,
-  科学: <p><ArticleAll/></p>,
-  时尚: <p><ArticleAll/></p>,
+  全站: <ArticleAll/>,
+  科学: <ArticleAll/>,
+  时尚: <ArticleAll/>,
 }
 
 
