@@ -39,7 +39,7 @@ export const adminRouter = [
   },
   {
     pathname:"/admin/postContent",
-    component:PostContent,
+    component:Setting,
     title:"发布内容",
     isOff:true,
     icon:"setting"
