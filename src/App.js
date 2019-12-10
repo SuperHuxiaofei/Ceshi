@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <Frame>
         <Switch>
-          <Redirect to={adminRouter[1].pathname} exact from="/admin"/>
+          <Redirect to={adminRouter[0].pathname} exact from="/admin"/>
           {
             adminRouter.map((item)=>{
               return <Route key={item.pathname} path={item.pathname} render={(routerProps)=><item.component {...routerProps}/>}/>

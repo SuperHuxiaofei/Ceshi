@@ -9,3 +9,15 @@
   width:100%;
   height:300px;
 }
+.homepageBody main.ant-layout-content{
+  width:640px;
+  flex:none;
+  padding:0 20px;
+}
+.amount .ant-card-body{
+  display: flex;
+  justify-content: space-around;
+}
+.amount .ant-card-body .ant-statistic{
+  margin: 10px;
+}

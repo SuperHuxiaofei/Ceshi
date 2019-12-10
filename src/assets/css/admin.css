@@ -12,3 +12,7 @@
   height:99px;
   display:flex;
 }
+.ant-badge{
+  display:block;
+  margin-top: 10px;
+}

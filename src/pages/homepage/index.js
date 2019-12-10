@@ -1,7 +1,23 @@
 import React,{Component} from "react"
-import { Card, Icon, Avatar,Timeline, Carousel } from 'antd'
+import { Card,  Avatar, Collapse, Icon} from 'antd'
 import "../../assets/css/homepage.css"
+import Banner from "./components/Banner"
+import HomepageBody from "./components/Body"
+const { Panel } = Collapse;
 const { Meta } = Card;
+const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
+
+const customPanelStyle = {
+  background: '#f7f7f7',
+  borderRadius: 4,
+  marginBottom: 24,
+  border: 0,
+  overflow: 'hidden',
+};
 class Homepage extends Component {
   render(){
     return (
@@ -9,42 +25,25 @@ class Homepage extends Component {
         <Card
           style={{ width: '100%' }}
           cover={
-            <Carousel autoplay>
-              <img
-                alt="example"
-                src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1575900505094&di=daafe70a1e78e848cfdb721bb630b1fb&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201708%2F21%2F20170821102718_wf2ZX.thumb.700_0.jpeg"
-              />
-              <img
-                alt="example"
-                src="http://pic1.win4000.com/wallpaper/2018-07-21/5b52c38319273.jpg"
-              />
-              <img
-                alt="example"
-                src="http://pic1.win4000.com/wallpaper/7/5469a105e2c97.jpg"
-              />
-            </Carousel>
+            <Banner/>
           }
-          actions={[
-            <Icon type="setting" key="setting" onClick={()=>{this.props.history.push("/admin/setting")}}/>,
-            <Icon type="edit" key="edit" />,
-            <Icon type="ellipsis" key="ellipsis" />,
-          ]}
         >
           <Meta
-            avatar={<Avatar src="http://b-ssl.duitang.com/uploads/item/201802/05/20180205002036_qebfm.thumb.700_0.jpg" />}
-            title="用户id"
-            description="用户描述"
-          />
-          {/* 这里写个循环 */}
-          <Timeline mode="alternate">
-            <Timeline.Item>建立了nb项目组的个人主页第一步</Timeline.Item>
-            <Timeline.Item color="green">hhh建立了nb项目组的个人主页第二步</Timeline.Item>
-            <Timeline.Item>yyyyyy建立了nb项目组的个人主页第三步</Timeline.Item>
-            <Timeline.Item color="green">aaaa建立了nb项目组的个人主页第四步</Timeline.Item>
-            <Timeline.Item>
-              Technical testing 2015-09-01
-            </Timeline.Item>
-          </Timeline>
+                avatar={<Avatar src="http://b-ssl.duitang.com/uploads/item/201802/05/20180205002036_qebfm.thumb.700_0.jpg" />}
+                title="用户id"
+                description={
+                  <Collapse
+                    bordered={false}
+                    defaultActiveKey={['1']}
+                    expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}
+                  >
+                    <Panel header="展开个人描述" key="1" style={customPanelStyle}>
+                      <p>{text}</p>
+                    </Panel>
+                  </Collapse>
+                }
+              />
+          <HomepageBody/>
         </Card>
       </div>
     )

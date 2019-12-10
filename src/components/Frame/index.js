@@ -1,33 +1,135 @@
 import React,{Component} from "react"
 import {withRouter} from "react-router-dom"
-import { Layout, Menu, Icon } from 'antd'
+import { Layout, Menu, Icon, Switch, Badge, Button,Modal,List} from 'antd'
 import "../../assets/css/admin.css"
 import {adminRouter} from "../../router/route"
 const slide = adminRouter.filter((item)=>item.isOff === true)
 const { Header, Content, Sider } = Layout;
 class Admin extends Component {
-  constructor(props){
-    super(props)
-  }
+  state = {
+    theme: 'light',
+    visible: false,
+    visibleMes: false,
+    data : [
+      {
+        title: 'Ant Design Title 1',
+      },
+      {
+        title: 'Ant Design Title 2',
+      },
+      {
+        title: 'Ant Design Title 3',
+      },
+      {
+        title: 'Ant Design Title 4',
+      },
+    ]
+  };
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+  showModalMes = () => {
+    this.setState({
+      visibleMes: true,
+    });
+  };
+  handleOk = e => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+    this.props.history.push('/login')
+  };
+
+  handleCancel = e => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  };
+  handleOkMes = e => {
+    console.log(e);
+    this.setState({
+      visibleMes: false,
+    });
+  };
+
+  handleCancelMes = e => {
+    console.log(e);
+    this.setState({
+      visibleMes: false,
+    });
+  };
+  changeTheme = value => {
+    this.setState({
+      theme: value ? 'dark' : 'light',
+    });
+  };
   handleSelect(i){
-    // console.log(i)
     this.props.history.push(slide[i].pathname)
   }
   render(){
-    // console.log(this.props)
     return (
       <div>
         <Layout>
           <Header className="header">
-            <div className="logo" />
+            <div 
+            style={{background:'#fff',position:'absolute',right:150,top:25,width:50,height:30,borderRadius:'5px',textAlign:'center'}}
+            onClick={this.showModalMes}
+            >
+              <Badge count={5} style={{position:'absolute',right:0,top:'-8px'}}>
+                <a href="#" className="head-example" />
+                消息
+              </Badge>
+            </div>
+            <Modal
+              title="未读消息列表"
+              visible={this.state.visibleMes}
+              onOk={this.handleOkMes}
+              onCancel={this.handleCancelMes}
+              cancelText="关闭"
+              okText="查看详情"
+            >
+              <List
+                itemLayout="horizontal"
+                dataSource={this.state.data}
+                renderItem={item => (
+                  <List.Item>
+                    <List.Item.Meta
+                      title={<a href="https://ant.design">{item.title}</a>}
+                      description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                    />
+                  </List.Item>
+                )}
+              />
+            </Modal>
+            <Button style={{position:'absolute',right:45,top:25}} onClick={this.showModal}>退出登录</Button>
+            <Modal
+              title="确认退出"
+              visible={this.state.visible}
+              onOk={this.handleOk}
+              onCancel={this.handleCancel}
+              cancelText="再玩一会~"
+              okText="狠心退出"
+            >
+              <p>确定退出登录吗？</p>
+            </Modal>
           </Header>
           <Layout>
             <Sider width={200} style={{ background: '#fff' }}>
+              <div>
+                <Switch onChange={this.changeTheme} checkedChildren="白" unCheckedChildren="夜"/>
+                <br />
+                <br />
+              </div>
               <Menu
-                mode="inline"
+                mode='vertical'
                 defaultSelectedKeys={[this.props.location.pathname]}
                 defaultOpenKeys={['sub1']}
                 style={{ height: '100%', borderRight: 0 }}
+                theme={this.state.theme}
               >
                 {
                   slide.map((item,index)=>{
