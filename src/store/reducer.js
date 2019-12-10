@@ -1,4 +1,4 @@
 import {combineReducers} from "redux"
-import userList from "../pages/admin/reducer/userList.redux"
-const reducer = combineReducers({userList})
+import colorStore from "../pages/setting/reducer/setting.redux"
+const reducer = combineReducers({colorStore})
 export default reducer

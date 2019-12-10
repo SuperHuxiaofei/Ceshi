@@ -3,6 +3,8 @@ import {withRouter} from "react-router-dom"
 import { Layout, Menu, Icon, Switch, Badge, Button,Modal,List} from 'antd'
 import "../../assets/css/admin.css"
 import {adminRouter} from "../../router/route"
+import {connect} from "react-redux"
+import {getColor} from "../../pages/setting/reducer/setting.redux"
 const slide = adminRouter.filter((item)=>item.isOff === true)
 const { Header, Content, Sider } = Layout;
 class Admin extends Component {
@@ -158,4 +160,9 @@ class Admin extends Component {
     )
   }
 }
-export default withRouter(Admin)
+const mapStateToProps = (state)=>{
+  return {
+    content:state.colorStore
+  }
+}
+export default connect(mapStateToProps,{getColor})(withRouter(Admin))
