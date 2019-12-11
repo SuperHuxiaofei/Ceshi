@@ -10,7 +10,9 @@ class PostContent extends Component {
     // console.log(this.context)
     this.state = {
       editorContent: '',
-      update:false
+      update:false,
+      editor:'',
+      elem:''
     }
   }
   render() {
@@ -24,41 +26,39 @@ class PostContent extends Component {
     )
   }
   componentDidMount() {
-    const elem = this.refs.editorElem
-    const editor = new E(elem)
+    // const elem = this.refs.editorElem
+    // const editor = new E(elem)
     // 使用 onchange 函数监听内容的变化，并实时更新到 state 中
-    editor.customConfig.onchange = html => {
-      this.setState({
-        editorContent: html
-      })
-    }
-    editor.create()
+    this.setState((state)=>{
+      return {
+        editor:new E(this.refs.editorElem)
+      }
+    },_=>{
+      this.state.editor.create()
+      console.log(this.state.editor)
+      this.state.editor.customConfig.onchange = html => {
+        console.log(html)
+        this.setState({
+          editorContent: html,
+          editor:this.state.editor
+        })
+      }
+    })
   }
 
   clickHandle() {
-    (this.state.editorContent !== '' && this.state.editorContent !== "<p><br></p>") ? this.props.userPostedContent(this.state.editorContent) : message.warning('请输入内容');
     this.setState({
       update:true
-    })
-    this.setState((state)=>{
-      return {
-        editorContent:''
-      }
-    },_=>{
-      this.setState({
-        update:false
-      })
     })
   }
   shouldComponentUpdate(){
     return this.state.update
   }
   componentDidUpdate(){
-    console.log(this.props)
+    console.log(this.props.state)
   }
 }
 const mapStateToProps = state => {
-  // console.log(state)
   return {
     state
   }
