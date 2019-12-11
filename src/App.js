@@ -12,7 +12,7 @@ class App extends Component {
           {
             adminRouter.map((item)=>{
               return <Route key={item.pathname} path={item.pathname} render={(routerProps)=><item.component {...routerProps}/>}/>
-              })
+            })
           }
         </Switch>
       </Frame>
