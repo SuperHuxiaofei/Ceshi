@@ -135,14 +135,14 @@ class Admin extends Component {
               >
                 {
                   slide.map((item,index)=>{
-                    return <Menu.Item key={item.pathname} onClick={this.handleSelect.bind(this,index)}>
+                    return <Menu.Item key={item.pathname} onClick={this.handleSelect.bind(this,index)} style={{color :this.props.content.color }}>
                       <Icon type={item.icon} />
                       {item.title}</Menu.Item>
                   })
                 }
               </Menu>
             </Sider>
-            <Layout style={{ padding: '0 24px 24px' }}>
+            <Layout style={{ padding: '0 24px 24px'}}>
               <Content
                 style={{
                   background: '#fff',

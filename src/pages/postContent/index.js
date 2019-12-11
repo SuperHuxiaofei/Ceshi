@@ -1,14 +1,16 @@
 import React, { Component } from "react"
-import { message, Button } from 'antd';
+import { message} from 'antd';
 import { connect } from "react-redux"
+import {userPostedContent} from "./reducer"
 import E from 'wangeditor'
 
 class PostContent extends Component {
-  constructor(props, context) {
-    super(props, context)
-    console.log(this.context)
+  constructor(props) {
+    super(props)
+    // console.log(this.context)
     this.state = {
-      editorContent: ''
+      editorContent: '',
+      update:false
     }
   }
   render() {
@@ -34,13 +36,31 @@ class PostContent extends Component {
   }
 
   clickHandle() {
-    this.state.editorContent !== '' && this.state.editorContent !== "<p><br></p>" ? console.log(this.state.editorContent) : message.warning('请输入内容');
+    this.state.editorContent !== '' && this.state.editorContent !== "<p><br></p>" ? this.props.userPostedContent(this.state.editorContent) : message.warning('请输入内容');
+    this.setState({
+      update:true
+    })
+    this.setState((state)=>{
+      return {
+        editorContent:''
+      }
+    },_=>{
+      this.setState({
+        update:false
+      })
+    })
+  }
+  shouldComponentUpdate(){
+    return this.state.update
+  }
+  componentDidUpdate(){
+    console.log(this.props)
   }
 }
 const mapStateToProps = state => {
-  console.log(state)
+  // console.log(state)
   return {
     state
   }
 }
-export default connect(mapStateToProps)(PostContent)
+export default connect(mapStateToProps,{userPostedContent})(PostContent)
