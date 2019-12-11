@@ -36,7 +36,7 @@ class PostContent extends Component {
   }
 
   clickHandle() {
-    this.state.editorContent !== '' && this.state.editorContent !== "<p><br></p>" ? this.props.userPostedContent(this.state.editorContent) : message.warning('请输入内容');
+    (this.state.editorContent !== '' && this.state.editorContent !== "<p><br></p>") ? this.props.userPostedContent(this.state.editorContent) : message.warning('请输入内容');
     this.setState({
       update:true
     })
