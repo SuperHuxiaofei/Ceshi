@@ -21,3 +21,7 @@
 .amount .ant-card-body .ant-statistic{
   margin: 10px;
 }
+.homepageBody .ant-layout-sider-dark{
+  flex:1!important;
+  max-width: none!important;
+}

@@ -6,7 +6,7 @@ class Body extends Component {
   render(){
     return (
       <Layout className="homepageBody">
-        <Content style={{background:'#fff'}}>
+        <Content style={{background:'#fff',float:'left',margin:8}}>
           <Tabs>
             <TabPane tab="动态" key="1">
               动态
@@ -19,13 +19,13 @@ class Body extends Component {
             </TabPane>
           </Tabs>
         </Content>
-        <Sider style={{background:'#999',marginLeft:8}}>
-          <Card size="small" title="个人成就" style={{ width: 300 }}>
+        <Sider style={{background:'#999',margin:8}}>
+          <Card size="small" title="个人成就" style={{ width: '100%'}}>
             <p>动态</p>
             <p>关注</p>
             <p>Card content</p>
           </Card>
-          <Card size="small" style={{ width: 300 }} className="amount">
+          <Card size="small" style={{ width: '100%'}} className="amount">
             <Statistic
               title="关注了"
               value={3}
