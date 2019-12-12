@@ -9,15 +9,11 @@ class PostContent extends Component {
     super(props)
     // console.log(this.context)
     this.state = {
-      editorContent: '',
-      update:false,
-      editor:'',
-      elem:''
+      editor:''
     }
   }
   render() {
     return (
-      // <div>postContent</div>
       <div>
         {/* 将生成编辑器 */}
         <div ref="editorElem" style={{ textAlign: 'left', width: 'auto', minWidth: 750, margin: '10px auto' }}></div>
@@ -35,27 +31,22 @@ class PostContent extends Component {
       }
     },_=>{
       this.state.editor.create()
-      console.log(this.state.editor)
-      this.state.editor.customConfig.onchange = html => {
-        console.log(html)
-        this.setState({
-          editorContent: html,
-          editor:this.state.editor
-        })
-      }
+      this.state.editor.txt.html("<p>请输入内容</p>")
     })
+    console.log(this.state.editor)
   }
 
   clickHandle() {
-    this.setState({
-      update:true
-    })
-  }
-  shouldComponentUpdate(){
-    return this.state.update
-  }
-  componentDidUpdate(){
-    console.log(this.props.state)
+    // console.log(this.state.editor.txt.html())
+    let data = this.state.editor.txt.html()
+    console.log(data)
+    if (data === "<p>请输入内容</p>" || data === "<p><br></p>"){
+      message.warning("请输入内容")
+    } else {
+      this.props.userPostedContent(data)
+      this.state.editor.txt.html("<p>请输入内容</p>")
+    }
+    // console.log(this.props.state)
   }
 }
 const mapStateToProps = state => {
