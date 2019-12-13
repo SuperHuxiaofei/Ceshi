@@ -1,7 +1,7 @@
 import React,{Component} from "react"
 import { Layout, Tabs, Card,Statistic,Timeline } from 'antd'
 import {connect} from "react-redux"
-import {deleteThis} from "../../postContent/reducer"
+import {deleteThis} from "@/pages/postContent/reducer"
 const {Sider, Content } = Layout;
 const { TabPane } = Tabs;
 class Body extends Component {

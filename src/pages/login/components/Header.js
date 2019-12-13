@@ -1,5 +1,5 @@
 import React,{Component,Fragment} from "react"
-import logo from "../../../assets/img/ZqqUni.png"
+import logo from "@/assets/img/ZqqUni.png"
 class LoginHeader extends Component {
   render(){
     return (

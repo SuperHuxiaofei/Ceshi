@@ -3,10 +3,11 @@ import { Layout } from 'antd'
 import LoginHeader from "./components/Header"
 import LoginFooter from "./components/Footer"
 import LoginContent from "./components/Content"
-import "../../assets/css/login.css"
+import "@/assets/css/login.css"
 const { Header, Footer, Content } = Layout
 class Login extends Component {
   render(){
+    // console.log(this.props.form)
     return (
         <div>
           <Layout>
