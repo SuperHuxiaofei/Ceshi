@@ -1,11 +1,14 @@
 import React,{Component,Fragment} from "react"
 import { Form, Icon, Input, Button, Checkbox } from 'antd'
+import {connect} from "react-redux"
+import {getUserInfo,setUserInfo} from "../reducer"
 class LoginContent extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        this.props.getUserInfo(values)
       }
     });
   };
@@ -56,5 +59,8 @@ class LoginContent extends Component {
   }
 }
 //
+const mapStateToProps = (state) => {
+  return state.login
+}
 const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(LoginContent);
-export default WrappedNormalLoginForm
+export default connect(mapStateToProps,{getUserInfo,setUserInfo})(WrappedNormalLoginForm)

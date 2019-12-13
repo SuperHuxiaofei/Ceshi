@@ -1,4 +1,4 @@
-import {getArticleListData} from "../../../axios/api"
+import {getArticleListData} from "@/axios/api"
 const GET_ARTICLE_LIST = "GET_ARTICLE_LIST"
 const defaultState = {
   listData:[]
