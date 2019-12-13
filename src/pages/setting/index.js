@@ -126,17 +126,18 @@ class Setting extends Component {
       </div>
     )
     return (
-      <Collapse bordered={false} defaultActiveKey={['1']}  style={{fontSize:localStorage.getItem('size')}}>
+      <Collapse bordered={false} defaultActiveKey={['1']}  style={{fontSize:localStorage.getItem('size'),backgroundColor:"rgba(0,0,0,0.2)"}}>
         <Panel header="字体设置" key="1">
-          <div style={{ width: 130, float: "left", height: "24px", lineHeight: "24px" }}>字体大小 : </div>
+          <div style={{ width: 130, float: "left", height: "30px", lineHeight: "30px" }}>字体大小 : </div>
           <Select defaultValue="16px" style={{ width: 120, float: "left" , margin:" 0 10px"}} onSelect={this.optionfontValue} >
             
             <Option value="24px">大</Option>
             <Option value="16px">中</Option>
             <Option value="10px">小</Option>
+            
           </Select>
           <div>
-          <Button onClick={this.showModal}>字体选择..</Button>
+          <Button onClick={this.showModal} style={{ height: "30px", lineHeight: "30px" }}>字体选择..</Button>
           <Modal
           title="字体："
           okText="确认"
