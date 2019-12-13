@@ -4,7 +4,7 @@ import { Layout, Menu, Icon, Switch, Badge, Button,Modal,List} from 'antd'
 import "../../assets/css/admin.css"
 import {adminRouter} from "../../router/route"
 import {connect} from "react-redux"
-import {getColor} from "../../pages/setting/reducer/setting.redux"
+import {getColor,getBack,getSize} from "../../pages/setting/reducer/setting.redux"
 const slide = adminRouter.filter((item)=>item.isOff === true)
 const { Header, Content, Sider } = Layout;
 class Admin extends Component {
@@ -72,9 +72,10 @@ class Admin extends Component {
   handleSelect(i){
     this.props.history.push(slide[i].pathname)
   }
+  
   render(){
     return (
-      <div>
+      <div style={{fontFamily:this.props.content.fontstyle,fontSize:this.props.content.size}}>
         <Layout>
           <Header className="header" style={{background:this.props.content.color}}>
             <div 
@@ -148,7 +149,7 @@ class Admin extends Component {
                   background: '#fff',
                   padding: 24,
                   margin: 24,
-                  minHeight: 280,
+                  minHeight: 280,backgroundImage:`url(${this.props.content.url})`,backgroundRepeat: "no-repeat", backgroundSize: "100% 100%"
                 }}
               >
                 {this.props.children}
@@ -165,4 +166,4 @@ const mapStateToProps = (state)=>{
     content:state.colorStore
   }
 }
-export default connect(mapStateToProps,{getColor})(withRouter(Admin))
+export default connect(mapStateToProps,{getColor,getBack})(withRouter(Admin))
