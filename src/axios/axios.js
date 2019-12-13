@@ -4,7 +4,7 @@ service.interceptors.request.use(config=>{
   return config
 })
 service.interceptors.response.use(res=>{
-  console.log(res)
+  // console.log(res)
   return res
 })
 export default service

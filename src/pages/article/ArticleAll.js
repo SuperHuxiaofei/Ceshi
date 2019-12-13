@@ -1,37 +1,19 @@
 import React,{Component} from "react"
 import {connect} from "react-redux"
 import ContentList from './ContentList'
-
+import {getDataList} from "../article/reducer"
 class ArticleAll extends Component{
-  constructor(props){
-    super(props);
-    this.state={
-      listData : []
-    }
-  }
   render(){
+    // console.log(this.props)
     return(
-      <ContentList listData={this.state.listData}/>
+      <ContentList listData={this.props.listData}/>
     )
   }
-  componentWillMount(){
-      const newList = []
-      for(let i = 0;i<20;i++){
-        newList.push({
-          href: '#',
-          title: `测试！ ${i}`,
-          description:
-            'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-          content:
-            'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-        })
-      }
-      this.setState({
-        listData:newList
-      })
-}
+  componentDidMount(){
+    this.props.getDataList()
+  }
 }
 const mapStateToProps = (state) => {
   return state.article
 }
-export default connect(mapStateToProps,{})(ArticleAll)
+export default connect(mapStateToProps,{getDataList})(ArticleAll)

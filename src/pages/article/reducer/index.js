@@ -23,8 +23,9 @@ function getData (data) {
 }
 export const getDataList = ()=>{
   return (dispatch) => {
-    getArticleListData.then(res=>{
-      console.log(res)
+    getArticleListData().then(res=>{
+      dispatch(getData(res.data.data.articleList))
+      // console.log(res.data.data.articleList)
     })
   }
 }
