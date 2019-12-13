@@ -42,7 +42,7 @@ class Setting extends Component {
        fontstyle:e
      })
      this.props.getFont(this.state.fontstyle)
-    localStorage.setItem("size",this.state.fontstyle)
+    localStorage.setItem("fontstyle",this.state.fontstyle)
   }
   optionfontValue = e=>{
     this.setState({
