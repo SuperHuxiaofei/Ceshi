@@ -1,6 +1,6 @@
 import React,{Component} from "react"
 import { Card,  Avatar, Collapse, Icon} from 'antd'
-import "../../assets/css/homepage.css"
+import "@/assets/css/homepage.css"
 import Banner from "./components/Banner"
 import HomepageBody from "./components/Body"
 const { Panel } = Collapse;
