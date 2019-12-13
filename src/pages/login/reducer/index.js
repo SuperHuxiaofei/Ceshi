@@ -1,3 +1,4 @@
+import { userLogin } from "../../../axios/api"
 const userInfo = JSON.parse(localStorage.getItem("userInfo"))
 const defaultState = {
 	"avatar": userInfo && userInfo.avatar || "",
@@ -32,9 +33,17 @@ const setUserInfoData = (data) => ({
 
 //注册
 export const setUserInfo = (userInfo) => {
-	return (dispatch) => {
-
-	}
+    return (dispatch) => {
+        userLogin(userInfo)
+            .then(res=>{
+                if(userInfo.remember){
+                    localStorage.setItem("userInfo",JSON.stringify(res.data))
+                }else{
+                    sessionStorage.setItem("userInfo",JSON.stringify(res.data))
+                }
+                dispatch(getUserInfo(res.data))
+            })
+    }
 }
 //登录
 export const getUserInfo = (userInfo) => {
