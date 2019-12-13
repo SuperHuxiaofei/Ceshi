@@ -18,4 +18,12 @@ module.exports = (app) => {
       "^/swk":"/"
     }
   }))
+  app.use(proxy("/teacher",{
+    target:"http://rap2api.taobao.org/app/mock/239138",
+    secure:true,
+    changeOrigin:true,
+    pathRewrite:{
+      "^/teacher":"/"
+    }
+  }))
 }
