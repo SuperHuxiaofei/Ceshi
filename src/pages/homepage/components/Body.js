@@ -1,5 +1,7 @@
 import React,{Component} from "react"
-import { Layout, Tabs, Card,Statistic} from 'antd'
+import { Layout, Tabs, Card,Statistic,Timeline } from 'antd'
+import {connect} from "react-redux"
+import {deleteThis} from "../../postContent/reducer"
 const {Sider, Content } = Layout;
 const { TabPane } = Tabs;
 class Body extends Component {
@@ -9,7 +11,15 @@ class Body extends Component {
         <Content style={{background:'#fff',float:'left',margin:8}}>
           <Tabs>
             <TabPane tab="动态" key="1">
-              动态
+            <Timeline>
+              {
+                this.props.postList.map((item,index)=>{
+                  return <Timeline.Item key={index}>
+                    <p  dangerouslySetInnerHTML = {{__html:item}}></p><span>删除</span>
+                  </Timeline.Item>
+                })
+              }
+            </Timeline>
             </TabPane>
             <TabPane tab="关注" key="2">
               关注
@@ -42,4 +52,9 @@ class Body extends Component {
     )
   }
 }
-export default Body
+const mapStateToProps = (state) => {
+  return {
+    postList:state.postContent.postContent
+  }
+}
+export default connect(mapStateToProps,{deleteThis})(Body)

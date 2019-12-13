@@ -1,4 +1,4 @@
-import { userLogin } from "../../../api/api"
+// import { userLogin } from "../../../api/api"
 const userInfo = JSON.parse(localStorage.getItem("userInfo"))
 const defaultState = {
     "avatar": userInfo && userInfo.avatar || "",
@@ -27,14 +27,6 @@ const getUserInfo = (data) => ({
 
 export const setUserInfo = (userInfo) => {
     return (dispatch) => {
-        userLogin(userInfo)
-            .then(res => {
-                if (userInfo.remember) {
-                    localStorage.setItem("userInfo", JSON.stringify(res.data))
-                } else {
-                    sessionStorage.setItem("userInfo", JSON.stringify(res.data))
-                }
-                dispatch(getUserInfo(res.data))
-            })
+        
     }
 }

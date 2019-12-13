@@ -55,5 +55,6 @@ class LoginContent extends Component {
     )
   }
 }
+//
 const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(LoginContent);
 export default WrappedNormalLoginForm
