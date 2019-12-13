@@ -33,22 +33,22 @@ class ContentList extends Component{
           }
           renderItem={item => (
             <List.Item
-              key={item.title}
+              key={item.id}
               actions={[
-                <IconText type="fire" text="156 万领域热度" key="list-vertical-star-o" />,
+                <IconText type="fire" text={item.comment} key="list-vertical-star-o" />,
                 <IconText type="share-alt" text="分享" key="list-vertical-like-o" />
               ]}
               extra={
                 <img
                   width={272}
                   alt="logo"
-                  src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                  src={item.imageUrl}
                 />
               }
             >
               <List.Item.Meta
-                title={<a href={item.href}>{item.title}</a>}
-                description={item.description}
+                title={<a href='#'>{item.title}</a>}
+                description={item.des}
               />
               {item.content}
             </List.Item>

@@ -9,13 +9,11 @@ class PostContent extends Component {
     super(props)
     // console.log(this.context)
     this.state = {
-      editorContent: '',
-      update:false
+      editor:''
     }
   }
   render() {
     return (
-      // <div>postContent</div>
       <div>
         {/* 将生成编辑器 */}
         <div ref="editorElem" style={{ textAlign: 'left', width: 'auto', minWidth: 750, margin: '10px auto' }}></div>
@@ -24,41 +22,34 @@ class PostContent extends Component {
     )
   }
   componentDidMount() {
-    const elem = this.refs.editorElem
-    const editor = new E(elem)
+    // const elem = this.refs.editorElem
+    // const editor = new E(elem)
     // 使用 onchange 函数监听内容的变化，并实时更新到 state 中
-    editor.customConfig.onchange = html => {
-      this.setState({
-        editorContent: html
-      })
-    }
-    editor.create()
+    this.setState((state)=>{
+      return {
+        editor:new E(this.refs.editorElem)
+      }
+    },_=>{
+      this.state.editor.create()
+      this.state.editor.txt.html("<p>请输入内容</p>")
+    })
+    console.log(this.state.editor)
   }
 
   clickHandle() {
-    (this.state.editorContent !== '' && this.state.editorContent !== "<p><br></p>") ? this.props.userPostedContent(this.state.editorContent) : message.warning('请输入内容');
-    this.setState({
-      update:true
-    })
-    this.setState((state)=>{
-      return {
-        editorContent:''
-      }
-    },_=>{
-      this.setState({
-        update:false
-      })
-    })
-  }
-  shouldComponentUpdate(){
-    return this.state.update
-  }
-  componentDidUpdate(){
-    console.log(this.props)
+    // console.log(this.state.editor.txt.html())
+    let data = this.state.editor.txt.html()
+    console.log(data)
+    if (data === "<p>请输入内容</p>" || data === "<p><br></p>"){
+      message.warning("请输入内容")
+    } else {
+      this.props.userPostedContent(data)
+      this.state.editor.txt.html("<p>请输入内容</p>")
+    }
+    // console.log(this.props.state)
   }
 }
 const mapStateToProps = state => {
-  // console.log(state)
   return {
     state
   }
