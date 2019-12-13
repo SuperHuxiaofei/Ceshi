@@ -15,7 +15,7 @@ class Body extends Component {
               {
                 this.props.postList.map((item,index)=>{
                   return <Timeline.Item key={index}>
-                    <p  dangerouslySetInnerHTML = {{__html:item}}></p><span onClick={this.props.deleteThis(index)}>删除</span>
+                    <p  dangerouslySetInnerHTML = {{__html:item}}></p><span>删除</span>
                   </Timeline.Item>
                 })
               }

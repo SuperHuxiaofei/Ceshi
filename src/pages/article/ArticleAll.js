@@ -1,5 +1,5 @@
 import React,{Component} from "react"
-
+import {connect} from "react-redux"
 import ContentList from './ContentList'
 
 class ArticleAll extends Component{
@@ -31,5 +31,7 @@ class ArticleAll extends Component{
       })
 }
 }
-
-export default ArticleAll
+const mapStateToProps = (state) => {
+  return state.article
+}
+export default connect(mapStateToProps,{})(ArticleAll)

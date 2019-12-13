@@ -1,4 +1,4 @@
 import axios from "./axios"
-export const getData = ()=>{
-  return axios.get("/api/userList")
+export const getArticleListData = ()=>{
+  return axios.get("/article/api/article")
 }
