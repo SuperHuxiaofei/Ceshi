@@ -33,7 +33,7 @@ export const getDataList2 = (i)=>{
   return (dispatch) => {
     getArticleListData2(i).then(res=>{
       dispatch(getData(res.data))
-      console.log(res.data)
+      // console.log(res.data)
     })
   }
 }

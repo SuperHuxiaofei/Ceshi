@@ -17,21 +17,18 @@ const tabListNoTitle = [
     tab: '时尚',
   },
 ]
-
-const contentListNoTitle = {
-  全站: <ArticleAll/>,
-  科学: <ArticleAll/>,
-  时尚: <ArticleAll/>,
-}
-
-
 class ArticleList extends Component {
   state = {
     key: 'tab1',
     noTitleKey: '全站',
+    contentListNoTitle : {
+      全站: <ArticleAll history={this.props.history}/>,
+      科学: <ArticleAll history={this.props.history}/>,
+      时尚: <ArticleAll history={this.props.history}/>,
+    }
   }
   onTabChange = (key, type) => {
-    console.log(key, type)
+    // console.log(key, type)
     this.setState({ [type]: key })
   }
   render(){
@@ -46,7 +43,7 @@ class ArticleList extends Component {
             this.onTabChange(key, 'noTitleKey')
           }}
         >
-          {contentListNoTitle[this.state.noTitleKey]}
+          {this.state.contentListNoTitle[this.state.noTitleKey]}
         </Card>
       </div>
     )
