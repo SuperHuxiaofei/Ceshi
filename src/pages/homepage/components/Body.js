@@ -1,10 +1,25 @@
 import React,{Component} from "react"
 import { Layout, Tabs, Card,Statistic,Timeline } from 'antd'
 import {connect} from "react-redux"
-import {deleteThis} from "../../postContent/reducer"
+import {deleteThis} from "@/pages/postContent/reducer"
 const {Sider, Content } = Layout;
 const { TabPane } = Tabs;
 class Body extends Component {
+  constructor(props){
+    super(props)
+    this.handleDelete = this.handleDelete.bind(this)
+  }
+  handleDelete(i){
+    this.props.deleteThis(i)
+  }
+  componentDidMount(){
+    for(let key in this.refs){
+      this.refs[key].addEventListener('click',()=>{
+        key = key - 0
+        this.handleDelete(key)
+      })
+    }
+  }
   render(){
     return (
       <Layout className="homepageBody">
@@ -14,9 +29,9 @@ class Body extends Component {
             <Timeline>
               {
                 this.props.postList.map((item,index)=>{
-                  return <Timeline.Item key={index}>
-                    <p  dangerouslySetInnerHTML = {{__html:item}}></p><span>删除</span>
-                  </Timeline.Item>
+                  return (<Timeline.Item key={index}>
+                            <p  dangerouslySetInnerHTML = {{__html:item}} style={{display:'inline-block'}}></p>&nbsp;&nbsp;<span ref={index}>删除</span>
+                          </Timeline.Item>)
                 })
               }
             </Timeline>

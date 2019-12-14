@@ -1,28 +1,20 @@
-/* import {
-  Login,
-  NotFound,
-  Homepage,
-  ArticleList,
-  ArticleEdit,
-  Setting,
-  PostContent
-} from "../pages" */
+import React from "react"
 import Loadable from "react-loadable"
-import Loading from "../../src/components/Loading"
+import Loading from "@/components/Loading"
 
 export const mainRouter = [
   {
     pathname: "/login",
     component: Loadable({
-      loader: () => import("../../src/pages/login"),
-      loading: () => Loading
+      loader: () => import("@/pages/login"),
+      loading: () => <Loading/>
     })
   },
   {
     pathname: "/404",
     component: Loadable({
-      loader: () => import("../../src/pages/notFound"),
-      loading: () => Loading
+      loader: () => import("@/pages/notFound"),
+      loading: () => <Loading/>
     })
   }
 ]
@@ -30,8 +22,8 @@ export const adminRouter = [
   {
     pathname: "/admin/homepage",
     component: Loadable({
-      loader: () => import("../../src/pages/homepage"),
-      loading: () => Loading
+      loader: () => import("@/pages/homepage"),
+      loading: () => <Loading/>
     }),
     title: "个人主页",
     isOff: true,
@@ -40,8 +32,8 @@ export const adminRouter = [
   {
     pathname: "/admin/articleList",
     component: Loadable({
-      loader: () => import("../../src/pages/article/ArticleList"),
-      loading: () => Loading
+      loader: () => import("@/pages/article/ArticleList"),
+      loading: () => <Loading/>
     }),
     title: "热门话题",
     isOff: true,
@@ -50,16 +42,16 @@ export const adminRouter = [
   {
     pathname: "/admin/articleEdit",
     component: Loadable({
-      loader: () => import("../../src/pages/article/ArticleEdit"),
-      loading: () => Loading
+      loader: () => import("@/pages/article/ArticleEdit"),
+      loading: () => <Loading/>
     }),
     isOff: false
   },
   {
     pathname: "/admin/postContent",
     component: Loadable({
-      loader: () => import("../../src/pages/postContent"),
-      loading: () => Loading
+      loader: () => import("@/pages/postContent"),
+      loading: () => <Loading/>
     }),
     title: "发布内容",
     isOff: true,
@@ -68,8 +60,8 @@ export const adminRouter = [
   {
     pathname: "/admin/setting",
     component: Loadable({
-      loader: () => import("../../src/pages/setting"),
-      loading: () => Loading
+      loader: () => import("@/pages/setting"),
+      loading: () => <Loading/>
     }),
     title: "设置",
     isOff: true,

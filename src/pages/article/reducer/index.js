@@ -1,4 +1,4 @@
-import {getArticleListData} from "../../../axios/api"
+import {getArticleListData} from "@/axios/api"
 const GET_ARTICLE_LIST = "GET_ARTICLE_LIST"
 const defaultState = {
   listData:[]
@@ -25,7 +25,6 @@ export const getDataList = ()=>{
   return (dispatch) => {
     getArticleListData().then(res=>{
       dispatch(getData(res.data.data.articleList))
-      // console.log(res.data.data.articleList)
     })
   }
 }
