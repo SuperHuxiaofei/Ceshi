@@ -1,11 +1,8 @@
-
-
 const USER_POSTED_CONTENT = "USER_POSTED_CONTENT"
 const DELETE_THIS = "DELETE_THIS"
 const defaultState = {
   postContent : []
 }
-
 export default(state=defaultState,action)=>{
   const newState = JSON.parse(JSON.stringify(state))
   switch(action.type){
@@ -19,7 +16,6 @@ export default(state=defaultState,action)=>{
       return state
   }
 }
-
 export function userPostedContent (data){
   return {
     type : USER_POSTED_CONTENT,
