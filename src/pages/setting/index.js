@@ -37,19 +37,18 @@ class Setting extends Component {
   };
 
   optionValue = e=>{
-     console.log(e)
      this.setState({
        fontstyle:e
      })
-     this.props.getFont(this.state.fontstyle)
-    localStorage.setItem("fontstyle",this.state.fontstyle)
+     this.props.getFont(e)
+     localStorage.setItem("fontstyle",e)
   }
   optionfontValue = e=>{
     this.setState({
       fontsize:e
     })
-    this.props.getSize(this.state.fontsize)
-    localStorage.setItem("size",this.state.fontsize)
+    this.props.getSize(e)
+    localStorage.setItem("size",e)
  }
   
 
