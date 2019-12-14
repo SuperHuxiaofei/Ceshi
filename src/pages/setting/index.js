@@ -5,13 +5,11 @@ import { Collapse, Select, Button, Modal, Switch, Slider, InputNumber, Row, Col,
 const { Panel } = Collapse
 const { Option } = Select
 const { confirm } = Modal
-
 function getBase64(img, callback) {
   const reader = new FileReader();
   reader.addEventListener('load', () => callback(reader.result));
   reader.readAsDataURL(img);
 }
-
 function beforeUpload(file) {
   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
   if (!isJpgOrPng) {
@@ -23,9 +21,6 @@ function beforeUpload(file) {
   }
   return isJpgOrPng && isLt2M;
 }
-
-
-
 class Setting extends Component {
   state = { 
     visible: false,
@@ -35,7 +30,6 @@ class Setting extends Component {
     loading: false,
     fontsize:''
   };
-
   optionValue = e=>{
      console.log(e)
      this.setState({
@@ -51,8 +45,6 @@ class Setting extends Component {
     this.props.getSize(this.state.fontsize)
     localStorage.setItem("size",this.state.fontsize)
  }
-  
-
   handleChange = info => {
       getBase64(info.file.originFileObj, imageUrl =>
         this.setState({
@@ -63,42 +55,34 @@ class Setting extends Component {
       this.props.getBack(this.state.imageUrl)
       localStorage.setItem("imgurl",this.state.imageUrl)
   };
-
   handleDisabledChange = disabled => {
     this.setState({ disabled });
   }
-
   onChange = value => {
     this.setState({
       inputValue: value,
     });
   };
-
   ChangeColor = (e)=>{
      this.props.getColor(e.target.value)
      localStorage.setItem("color",e.target.value)
   }
-
   showModal = () => {
     this.setState({
       visible: true,
     });
   };
-
   handleOk = e => {
     this.setState({
       visible: false,
     });
   };
-
   handleCancel = e => {
     // console.log(e);
     this.setState({
       visible: false,
     });
   };
-
-  
   render() {
     const { disabled, imageUrl} = this.state
     function showDeleteConfirm() {
