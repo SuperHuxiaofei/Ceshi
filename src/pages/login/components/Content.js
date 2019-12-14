@@ -11,7 +11,7 @@ class LoginContent extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         this.props.setUserInfo(values)
-        this.props.history.push("/admin/dashboard")
+        this.props.history.push("/admin/homepage")
       }
     });
   };
