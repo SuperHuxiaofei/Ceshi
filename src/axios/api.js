@@ -4,6 +4,7 @@ export const getArticleListData = ()=>{
 }
 export const userLogin = (userInfo)=>{
   return axios.get("/teacher/api/login",userInfo)
+}
 export const getUserIsLogin = ()=>{
   return axios.get("/zqq")
 }
