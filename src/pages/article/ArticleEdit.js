@@ -1,24 +1,17 @@
 import React,{Component} from "react"
 // import ContentList from './ContentList'
 import { List,Button,Icon } from 'antd'
-
-
-
+import {connect} from "react-redux"
+const reg = /[.png|.jpg|.gif|.jpeg]/
 class ArticleEdit extends Component {
   constructor(props){
     super(props)
     this.state={
-      listData:[{
-        href: '#',
-          title: `测试！`,
-          description:
-            'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-          content:
-            'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-      }]
+      listData:[this.props.listData[this.props.location.params.index]]  
     }
   }
   render(){
+    console.log(this.props)
     return (
       // <ContentList listData={this.state.listData}/>
       <div>
@@ -33,7 +26,7 @@ class ArticleEdit extends Component {
           // }
           header={
             <div>
-              <h1 style={{fontSize:22,fontWeight:'bold',marginBottom:20}}>年轻女性背什么的包比较好？</h1>
+              <h1 style={{fontSize:22,fontWeight:'bold',marginBottom:20}}>{this.state.listData[0].title}</h1>
               <Button type="primary" style={{margin:8, fontSize:15}}>关注问题</Button>
               <Button icon="edit" style={{margin:8,fontSize:15}}>写回答</Button>
               <Button icon="user-add" style={{margin:8,fontSize:15}}>邀请回答</Button>
@@ -45,20 +38,14 @@ class ArticleEdit extends Component {
           }
           renderItem={item => (
             <List.Item
-              key={item.title}
-              extra={
-                <img
-                  width={272}
-                  alt="logo"
-                  src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-                />
-              }
+            key={item.title}
             >
+            <img src={item.small_image+'?imageView2/1/w/576/h/384'}/>
               <List.Item.Meta
                 title={<a href={item.href}>{item.title}</a>}
                 description={item.description}
               />
-              {item.content}
+              {item.text}
             </List.Item>
           )}
         />
@@ -66,4 +53,7 @@ class ArticleEdit extends Component {
     )
   }
 }
-export default ArticleEdit
+const mapStateToProps = (state) => {
+  return state.article
+}
+export default connect(mapStateToProps,null)(ArticleEdit)

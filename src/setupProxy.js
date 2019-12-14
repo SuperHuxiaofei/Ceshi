@@ -26,4 +26,12 @@ module.exports = (app) => {
       "^/teacher":"/"
     }
   }))
+  app.use(proxy('/hxy',{
+    target:'https://www.guokr.com/beta/proxy/science_api',
+    secure:true,
+    changeOrigin:true,
+    pathRewrite:{
+      "^/hxy":"/"
+    }
+  }))
 }

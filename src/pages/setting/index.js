@@ -113,7 +113,6 @@ class Setting extends Component {
         <Panel header="字体设置" key="1">
           <div style={{ width: 130, float: "left", height: "30px", lineHeight: "30px" }}>字体大小 : </div>
           <Select defaultValue="16px" style={{ width: 120, float: "left" , margin:" 0 10px"}} onSelect={this.optionfontValue} >
-            
             <Option value="24px">大</Option>
             <Option value="16px">中</Option>
             <Option value="10px">小</Option>
