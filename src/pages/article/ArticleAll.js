@@ -1,7 +1,7 @@
 import React,{Component} from "react"
 import {connect} from "react-redux"
 import ContentList from './ContentList'
-import {getDataList} from "../article/reducer"
+import {getDataList,getDataList2} from "../article/reducer"
 class ArticleAll extends Component{
   render(){
     // console.log(this.props)
@@ -10,10 +10,10 @@ class ArticleAll extends Component{
     )
   }
   componentDidMount(){
-    this.props.getDataList()
+    this.props.getDataList2(1)
   }
 }
 const mapStateToProps = (state) => {
   return state.article
 }
-export default connect(mapStateToProps,{getDataList})(ArticleAll)
+export default connect(mapStateToProps,{getDataList,getDataList2})(ArticleAll)

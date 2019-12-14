@@ -3,7 +3,6 @@ import ReactDOM from "react-dom"
 import {Provider} from "react-redux"
 import store from "./store/store"
 import {BrowserRouter as Router,Switch,Route,Redirect} from "react-router-dom"
-import "antd/dist/antd.css"
 import "./assets/css/reset.css"
 import App from './App'
 import {mainRouter} from "./router/route"
