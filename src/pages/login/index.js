@@ -10,7 +10,7 @@ class Login extends Component {
     return (
         <div>
           <Layout>
-            <Header style={{height:"99px",backgroundColor:"#f0f2f5"}}>
+            <Header style={{height:"99px",backgroundColor:"#fff"}}>
               <LoginHeader/>
             </Header>
             <Content>
